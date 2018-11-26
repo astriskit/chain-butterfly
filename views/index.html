@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <title>URL Shortener</title>
+      <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="/public/style.css" rel="stylesheet" type="text/css">
+   </head>
+   <body>
+      <div class="container">
+        <h2>API Project: URL Shortener Microservice</h2>
+        <h3>User Story: </h3>
+        <ol>
+          <li>I can POST a URL to <code>https://chain-butterfly.glitch.me/api/shorturl/new</code> and I will receive a shortened URL in the JSON response.<br>Example : <code>{"original_url":"www.google.com","short_url":1}</code></li>
+          <li>If I pass an invalid URL that doesn't follow the <code>http(s)://www.example.com(/more/routes)</code> format, the JSON response will contain an error like <code>{"error":"invalid URL"}</code><br>
+          HINT: to be sure that the submitted url points to a valid site you can use the function <code>dns.lookup(host, cb)</code> from the <code>dns</code> core module.</li>
+          <li>When I visit the shortened URL, it will redirect me to my original link.</li>
+        </ol>
+        
+        <h3>Short URL Creation </h3>
+        <p>
+          example: <code>POST https://chain-butterfly.glitch.me/api/shorturl/new</code> - <code>https://www.google.com</code>
+        </p>
+        <form action="api/shorturl/new" method="POST">
+          <label for="url_input">URL to be shortened</label>
+          <input id="url_input" type="text" name="url" value="https://www.google.com">
+          <input type="submit" value="POST URL">
+        </form>
+        <h3>Example Usage:</h3>
+        <a href="https://chain-butterfly.glitch.me/api/shorturl/vHFNw3">
+          https://chain-butterfly.glitch.me/api/shorturl/vHFNw3
+        </a>
+
+        <h3>Will Redirect to:</h3>
+        <p>https://forum.freecodecamp.com</p>
+        <form>
+          <label for="short_url_input">Short Url to visit</label>
+          <div>
+            <span>https://chain-butterfly.glitch.me/api/shorturl/</span>
+            <input id="short_url_input" type="text" value="vHFNw3"/>  
+          </div>
+          <input type="button" onclick="handleNewUrl()" value="Go"/>
+        </form>
+      </div>
+      <div class="footer">
+        <p>
+          by <a href="https://github.com/astriskit/chain-butterfly">astriskit</a>
+        </p>
+      </div>
+    <script>
+      function handleNewUrl(){
+        let input_ele = document.getElementById('short_url_input')
+        let short_url = 'https://chain-butterfly.glitch.me/api/shorturl/' + input_ele.value
+        window.open(short_url)
+      }
+    </script> 
+  </body>
+  
+
+</html>
